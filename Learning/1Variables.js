@@ -1,16 +1,18 @@
 
-
+let accoutState ; // not initialized  (by default undefined (data type in js))
 let Name =  "Gulshan"
 var lastName = "Kumar"
 const password = 1276 
-
 {
     id = "gulshanitsyou"
 }
 
+
+
+
 array = [Name , lastName , password , id , "Ha bhai ye bhi "]; 
 
-console.table([Name , lastName ,password , id]);
+console.table([Name , lastName ,password , id , accoutState]);
 console.table(array);
 
 console.log( id);
