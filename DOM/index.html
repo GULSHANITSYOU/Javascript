@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Learning DOM</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100vw;
+      height: 100vh;
+      transition: 100ms;
+    }
+
+    button {
+      padding: 1vw 2vw;
+      margin: 1vw;
+      border: none;
+      border-radius: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    #Start {
+      background-color: rgb(85, 202, 85);
+    }
+
+    #Stop {
+      background-color: rgb(241, 63, 63);
+    }
+  </style>
+  <body>
+    <div class="container">
+      <button id="Start">Start</button>
+      <button id="Stop">Stop</button>
+    </div>
+  </body>
+  <script>
+    const container = document.querySelector(".container");
+    const Start = document.querySelector("#Start");
+    const Stop = document.querySelector("#Stop");
+
+    let stopChange;
+    function changeColor() {
+      if (!stopChange) {
+        stopChange = setInterval(() => {
+          container.style.backgroundColor = randomColor();
+        }, 100);
+      }
+    }
+
+    function rukjabhaibs(){
+        clearInterval(stopChange);
+        stopChange = null; 
+    }
+
+    function randomColor() {
+      const hex = "0123456789ABCDEF";
+      let color = "#";
+
+      for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 17)];
+      }
+      return color;
+    }
+
+    Start.addEventListener("click", changeColor);
+    Stop.addEventListener("click" , rukjabhaibs);
+  </script>
+</html>
