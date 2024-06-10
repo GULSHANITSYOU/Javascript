@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Patrick Hand", cursive;
+    letter-spacing: 3px;
+   
+}
+
+body{
+    width: 100%;
+}
+
+#root{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#github{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    /* justify-content: center; */
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#icone{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    padding: 0.1rem;
+    background-color: aliceblue;
+}
+
+#linkdin{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    /* justify-content: center; */
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.password-container{
+    width: 40%;
+    background-color: crimson;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+}
+
+.inputfield{
+    background-color: rgb(21, 24, 26);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+#Password{
+    width: 80%;
+    height: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    font-weight: bolder;
+    font-size: 1.2rem;   
+    
+}
+
+#copyButton{
+    background-color: rgb(41, 102, 244);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bolder;
+
+}
+
+.charctersticks{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 0.2rem 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
