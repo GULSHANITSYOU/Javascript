@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I am currency converter</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Namste ji.. 🙏🏼</h1>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="App-container">
+      <h1>Namste ji.. 🙏🏼</h1>
+      <h2>I am a currency converter 😎</h2>
+
+      <div class="App">
+        <form id="conversion-form">
+            <div class="input-field">
+                <div class="instruction">
+                    <label for="from-amount">From</label>
+                    <label for="from-currency">Currency Type</label>
+                </div>
+                <div class="input-amount">
+                    <input type="number" name="currency amount" id="from-amount">
+                    <select name="select currency" id="from-currency">
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>                
+            </div>
+
+            <div class="swap-btn">
+                <button id = "swap-btn">↑Swap↓</button>
+            </div>
+
+
+            <div class="input-field">
+                <div class="instruction">
+                    <label for="to-amount">To</label>
+                    <label for="to-currency">Currency Type</label>
+                </div>
+                <div class="input-amount">
+                    <input type="number" name="currency amount" id="to-amount">
+                    <select name="select currency" id="to-currency">
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>                 
+            </div>
+       
+        </form>
+      </div>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
