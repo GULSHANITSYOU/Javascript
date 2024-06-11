@@ -7,6 +7,7 @@ const rangeInput = document.querySelector("#range");
 const rangelength = document.querySelector(".length");
 const allowNumber = document.querySelector("#allowNumber");
 const allowCharcter = document.querySelector("#allowCharcter");
+const showlength = document.querySelector('.length');
 
 let isNumberAllowd = false;
 let isCharcterAllowd = false;
@@ -28,6 +29,7 @@ copybutton.addEventListener("click", () => {
 rangeInput.addEventListener("input", (e) => {
   lengthOfPassword = e.target.value;
   passwordGenrater(lengthOfPassword, isCharcterAllowd, isNumberAllowd);
+  showlength.innerText = lengthOfPassword;
 });
 
 //+++++++++++++ number allowd or not input event ++++++++
