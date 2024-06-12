@@ -93,6 +93,15 @@ body {
     border: none;
     padding: 0.5rem 0.7rem;
     font-weight: 700;
+    cursor: pointer;
+}
+
+ #from-currency:hover{
+    background-color: rgb(58, 118, 201);    
+}
+
+#to-currency:hover{
+  background-color: rgb(58, 118, 201);    
 }
 
 
