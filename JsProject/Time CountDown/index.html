@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
     <title>Time Countdown</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="appContainer">
+      <div class="AppTitle">
+        <h1>Time Countdown</h1>
+      </div>
+      <div class="app">
+        <div class="lable">
+          <lable>Hours</lable>
+          <lable>Minutes</lable>
+          <lable>Seconds</lable>
+        </div>
+        <div class="timeInputes">
+          <input max="99" ; min="00" type="number" name="hours" id="hours" />
+          <span>:</span>
+          <input
+            max="60"
+            ;
+            min="00"
+            type="number"
+            name="minutes"
+            id="minutes" />
+          <span>:</span>
+          <input
+            max="59"
+            ;
+            min="00"
+            type="number"
+            name="seconds"
+            id="seconds" />
+        </div>
+      </div>
+      <div class="buttonsContainer">
+        <button>start</button><button>stop</button><button>Reset</button>
+      </div>
+    </div>
 
-
-
-
-
-
-
-   <script src="script.js"></script>
-    
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

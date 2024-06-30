@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    
+}
+
+.appContainer{
+    background-color: transparent;
+    border: 2px solid white;
+    margin: 10% 20%;
+    border-radius: 12px;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.AppTitle h1{
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    background-color: transparent;
+}
+
+.app{
+    border: 2px solid white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 30rem;
+    
+
+}
+
+.lable{
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.timeInputes{
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.buttonsContainer{
+    border: 2px solid white;
+    border-radius: 6px;
+    display: flex ;
+    justify-content: space-between;
+    padding: 12px;
+    width: 30rem;
+}
+
+.buttonsContainer button{
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+    border: 2px solid white;
+    padding: 6px 12px;
+    border-radius: 10px;
+    transition: 100ms;
+}
+
+.buttonsContainer button:hover{
+    transform: scale(1.05);
+}
+
+
+
