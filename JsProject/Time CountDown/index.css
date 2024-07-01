@@ -90,8 +90,15 @@ body {
   font-weight: bolder;
 }
 
+#start{
+    background-color: green;
+}
 #stop {
   display: none;
+  background-color: crimson;
+}
+#reset{
+    background-color: greenyellow;
 }
 
 .buttonsContainer button:hover {

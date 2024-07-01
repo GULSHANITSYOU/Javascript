@@ -13,39 +13,40 @@
       </div>
       <div class="app">
         <div class="lable">
-          <lable>Hours</lable>
-          <lable>Minutes</lable>
-          <lable>Seconds</lable>
+          <lable for="hours">Hours</lable>
+          <lable for="minutes">Minutes</lable>
+          <lable for="seconds">Seconds</lable>
         </div>
         <div class="timeInputes">
           <input
-            value="00"
+            placeholder="00"
             max="99"
-            min="00"
+            min="0"
             type="number"
             name="hours"
             id="hours" />
           <span>:</span>
+
           <input
-            value="00"
+            placeholder="00"
             max="60"
-            min="00"
+            min="0"
             type="number"
             name="minutes"
             id="minutes" />
           <span>:</span>
           <input
-            value="00"
+            placeholder="00"
             max="59"
-            min="00"
+            min="0"
             type="number"
             name="seconds"
             id="seconds" />
         </div>
       </div>
       <div class="buttonsContainer">
-        <button id="start">Start</button><button id="stop">Stop</button
-        ><button id="reset">Reset</button>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button><button id="reset">Reset</button>
       </div>
     </div>
 
