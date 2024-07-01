@@ -18,19 +18,25 @@
           <lable>Seconds</lable>
         </div>
         <div class="timeInputes">
-          <input max="99" ; min="00" type="number" name="hours" id="hours" />
+          <input
+            value="00"
+            max="99"
+            min="00"
+            type="number"
+            name="hours"
+            id="hours" />
           <span>:</span>
           <input
+            value="00"
             max="60"
-            ;
             min="00"
             type="number"
             name="minutes"
             id="minutes" />
           <span>:</span>
           <input
+            value="00"
             max="59"
-            ;
             min="00"
             type="number"
             name="seconds"
@@ -38,7 +44,8 @@
         </div>
       </div>
       <div class="buttonsContainer">
-        <button>start</button><button>stop</button><button>Reset</button>
+        <button id="start">Start</button><button id="stop">Stop</button
+        ><button id="reset">Reset</button>
       </div>
     </div>
 
