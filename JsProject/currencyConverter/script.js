@@ -4,7 +4,8 @@ let currencyData;
 // ++++++++++++ fetching conversion rate of currency +++++++++++ 
 async function GetCurrencyData(currency , callauto =  true) {
     try {
-        const response = await fetch(`https://v6.exchangerate-api.com/v6/dedfc2ab7b8c6bad282aed76/latest/${currency}`);
+       console.log("hi");
+        const response = await fetch(`https://v6.exchangerate-api.com/v6/79bb3e2d038c0d73d181ba81/latest/${currency}`);
         const data = await response.json();
         currencyData = data.conversion_rates;
         
