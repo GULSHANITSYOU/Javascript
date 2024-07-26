@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Learn Node Js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Gulshan",
+  "license": "ISC",
+  "dependencies": {
+    "npm-watch": "^0.13.0"
+  }
+}
