@@ -1,15 +1,28 @@
 const express = require("express");
 const users = require("./userData.json");
 const fs = require("fs");
+const { log } = require("console");
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use((req, res, next) => {
+  res.username = "Gulshan kumar"; 
+  log("i am midlware 1 and  i made the username in request ");
+  next();
+});
+
+app.use((req,res,next)=>{
+  log("I am middleware 2"); 
+  log("I got the user name " + res.username); 
+  next();  
+})
+
 app.get("/users", (req, res) => {
   const html = `<ul>${users
-    .map((user) => (!user.user)?`<li>${user?.first_name}</li>`:"" )
+    .map((user) => (!user.user ? `<li>${user?.first_name}</li>` : ""))
     .join("")}</ul>`;
 
   res.send(html);
