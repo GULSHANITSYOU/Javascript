@@ -10,6 +10,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.username = "Gulshan kumar"; 
+  res.setHeader("x-your-last-name" , "kumar"); 
+
   log("i am midlware 1 and  i made the username in request ");
   next();
 });
@@ -17,6 +19,8 @@ app.use((req, res, next) => {
 app.use((req,res,next)=>{
   log("I am middleware 2"); 
   log("I got the user name " + res.username); 
+  log(req.headers); 
+
   next();  
 })
 
