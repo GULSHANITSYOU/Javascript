@@ -2,13 +2,10 @@ const express = require("express");
 const { log } = require("console");
 
 const app = express();
-
-app.get("/", (req, res) => {
-  return res.end("Home");
-});
-
-app.get("/About", (req, res) => res.end("About " + req.query.user));
+const PORT = 3000; 
 
 
 
-app.listen(3000, () => log("server started !"));
+
+
+app.listen(PORT, () => log("server started !"));

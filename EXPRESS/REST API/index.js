@@ -1,0 +1,60 @@
+const express = require("express");
+const users = require("./userData.json");
+const fs = require("fs");
+
+const app = express();
+const PORT = 3000;
+
+app.use(express.urlencoded({ extended: false }));
+
+app.get("/users", (req, res) => {
+  const html = `<ul>${users
+    .map((user) => (!user.user)?`<li>${user?.first_name}</li>`:"" )
+    .join("")}</ul>`;
+
+  res.send(html);
+});
+
+app
+  .route("/api/users")
+  .get((req, res) => res.json(users))
+  .post((req, res) => {
+    const body = req.body;
+    users.push({ id: users.length + 1, ...body });
+    fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
+      return res.json({
+        status: "success",
+        id: users.length,
+        user: body.first_name,
+      });
+    });
+  });
+
+app
+  .route("/api/users/:id")
+  .get((req, res) => {
+    const id = Number(req.params.id);
+    const user = users.find((user) => user.id === id);
+    return res.send(user);
+  })
+  .patch((req, res) => {
+    const id = Number(req.params.id);
+    const body = req.body;
+    const user = users[id - 1];
+
+    users[id - 1] = { ...user, ...body };
+
+    fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
+      return res.json({ status: "Successfully added", ...users[id - 1] });
+    });
+  })
+  .delete((req, res) => {
+    const id = Number(req.params.id);
+
+    users[id - 1] = { id: id, user: "Deleted" };
+    fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
+      return res.json({ status: "Successfully Deleted", ...users[id - 1] });
+    });
+  });
+
+app.listen(PORT, () => console.log(`server started at PORT: ${PORT}`));
