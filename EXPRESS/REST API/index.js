@@ -37,8 +37,19 @@ app
   .get((req, res) => res.json(users))
   .post((req, res) => {
     const body = req.body;
+
+    if(!body || !body.first_name || !body.last_name || !body.email || !body.gender || !body.ip_address || !body.job_title){
+      res.status(400).send({msg : "All field are required ! "}); 
+    }
+
+
     users.push({ id: users.length + 1, ...body });
     fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
+      if(err){
+        res.status(200);
+        return res.send(err); 
+      }else 
+      res.status(201); 
       return res.json({
         status: "success",
         id: users.length,
@@ -51,6 +62,9 @@ app
   .route("/api/users/:id")
   .get((req, res) => {
     const id = Number(req.params.id);
+    if(id >= users.length){
+      res.status(404).send({user:"not Availble"}); 
+    }
     const user = users.find((user) => user.id === id);
     return res.send(user);
   })
