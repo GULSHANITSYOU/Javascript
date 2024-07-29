@@ -1,10 +1,44 @@
 const express = require("express");
 const users = require("./userData.json");
 const fs = require("fs");
-const { log } = require("console");
+const { log, timeStamp } = require("console");
+const { default: mongoose } = require("mongoose");
 
 const app = express();
 const PORT = 3000;
+
+//Conection
+mongoose
+  .connect("mongodb://127.0.0.1:27017/gulshandb")
+  .then(() => log("Mongoconected !"))
+  .catch((err) => log("mongo Error ", err));
+
+// Schema
+const userSchema = mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      require: true,
+    },
+    last_name: {
+      type: String,
+    },
+    email: {
+      type: String,
+      require: true,
+      unique: true,
+    },
+    job_title: {
+      type: String,
+    },
+    gender: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+// Model
+const user = mongoose.model("user", userSchema);
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -24,9 +58,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/users", (req, res) => {
+app.get("/users", async (req, res) => {
+  const users = await user.find({});
   const html = `<ul>${users
-    .map((user) => (!user.user ? `<li>${user?.first_name}</li>` : ""))
+    .map((user) =>
+      !user.user ? `<li>${user?.firstName} : ${user.email}</li>` : ""
+    )
     .join("")}</ul>`;
 
   res.send(html);
@@ -34,8 +71,8 @@ app.get("/users", (req, res) => {
 
 app
   .route("/api/users")
-  .get((req, res) => res.json(users))
-  .post((req, res) => {
+  .get(async (req, res) => res.json(await user.find({})))
+  .post(async (req, res) => {
     const body = req.body;
 
     if (
@@ -50,48 +87,39 @@ app
       res.status(400).send({ msg: "All field are required ! " });
     }
 
-    users.push({ id: users.length + 1, ...body });
-    fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
-      if (err) {
-        res.status(200);
-        return res.send(err);
-      } else res.status(201);
-      return res.json({
-        status: "success",
-        id: users.length,
-        user: body.first_name,
-      });
+    const result = await user.create({
+      firstName: body.first_name,
+      last_name: body.last_name,
+      email: body.email,
+      job_title: body.job_title,
+      gender: body.gender,
     });
+
+    return res.status(201).json({ msg: "created successfully", ...result });
   });
 
 app
   .route("/api/users/:id")
-  .get((req, res) => {
-    const id = Number(req.params.id);
-    if (id >= users.length) {
-      res.status(404).send({ user: "not Availble" });
-    }
-    const user = users.find((user) => user.id === id);
-    return res.send(user);
+  .get(async (req, res) => {
+    const id = req.params.id;
+
+    const IDuser = await user.findById(id);
+
+    return res.json(IDuser);
   })
-  .patch((req, res) => {
-    const id = Number(req.params.id);
+  .patch(async (req, res) => {
+    const id = req.params.id;
     const body = req.body;
-    const user = users[id - 1];
 
-    users[id - 1] = { ...user, ...body };
+    const updated = await user.findByIdAndUpdate(id, { ...body });
 
-    fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
-      return res.json({ status: "Successfully added", ...users[id - 1] });
-    });
+    res.send({ msg: "Success" });
   })
-  .delete((req, res) => {
-    const id = Number(req.params.id);
+  .delete(async (req, res) => {
+    const id = req.params.id;
+    await user.findByIdAndDelete(id);
 
-    users[id - 1] = { id: id, user: "Deleted" };
-    fs.writeFile("./userData.json", JSON.stringify(users), (err, data) => {
-      return res.json({ status: "Successfully Deleted", ...users[id - 1] });
-    });
+    return res.json({ status: "Successfully Deleted" });
   });
 
 app.listen(PORT, () => console.log(`server started at PORT: ${PORT}`));
