@@ -25,8 +25,9 @@ app.set("veiws", path.resolve("./views"));
 
 // Routes
 app.use("/", StaticRoute);
+
 app.use("/url", UrlRoute);
-app.use("/user", UserRoute);
+app.use("/user", UserRoute); 
 
 // Redirect handler
 app.get("/url/:shortid", async (req, res) => {

@@ -11,7 +11,13 @@
     </style>
   </head>
   <body>
+    <a href="http://localhost:8001/signup">signup</a>
+    <a href="http://localhost:8001/login">login</a>
     <h1>URL shortener</h1>
+
+    <% if (locals.signedup && signedup) { %>
+      <h3 style="color: green;">successfully sign up !!!</h3>     
+    <% } %>
 
     <% if (locals.id) { %>
     <p>
