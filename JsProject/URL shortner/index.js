@@ -2,10 +2,13 @@ const express = require("express");
 const { URL } = require("./models/URL");
 const { connectToMongoDB } = require("./connect");
 const path = require("path");
+const cookieparser = require('cookie-parser');
 
 const UrlRoute = require("./routes/url");
 const StaticRoute = require("./routes/staticRout");
 const UserRoute = require("./routes/user");
+const { restrictToLoggedinOnly,checkAuth } = require("./middleware/auth");
+
 
 const app = express();
 const PORT = 8001;
@@ -18,16 +21,17 @@ connectToMongoDB("mongodb://127.0.0.1:27017/short-url").then(() =>
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieparser());
+
 
 // set the view engine to ejs
 app.set("view engine", "ejs");
 app.set("veiws", path.resolve("./views"));
 
 // Routes
-app.use("/", StaticRoute);
-
-app.use("/url", UrlRoute);
-app.use("/user", UserRoute); 
+app.use("/", checkAuth , StaticRoute);
+app.use("/url",restrictToLoggedinOnly, UrlRoute);
+app.use("/user",UserRoute); 
 
 // Redirect handler
 app.get("/url/:shortid", async (req, res) => {

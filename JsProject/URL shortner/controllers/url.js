@@ -3,7 +3,7 @@ const { URL } = require("../models/URL");
 
 async function handleGenerateNewShortUrl(req, res) {
   const body = req.body;
-  console.log(body);
+
   if (!body.url) return res.status(400).send('<h2>OHHH! you will have to put your URL first </h2>');
 
   const shortId = shortid();
@@ -12,6 +12,7 @@ async function handleGenerateNewShortUrl(req, res) {
     shortId: shortId,
     redirectURL: body.url,
     visitHistory: [],
+    createdby: req.user._id,
   });
 
   return res.status(201).render('home',{ status: "Success", id: shortId });
