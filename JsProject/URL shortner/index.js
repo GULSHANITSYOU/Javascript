@@ -29,7 +29,7 @@ app.set("view engine", "ejs");
 app.set("veiws", path.resolve("./views"));
 
 // Routes
-app.use("/", checkAuth , StaticRoute);
+app.use("/", checkAuth ,  StaticRoute);
 app.use("/url",restrictToLoggedinOnly, UrlRoute);
 app.use("/user",UserRoute); 
 
