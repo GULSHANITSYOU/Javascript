@@ -11,7 +11,7 @@ function setUser(user) {
     );
   } catch (error) {
     return null;
-  }
+   }
 }
 
 function getUser(token) {
