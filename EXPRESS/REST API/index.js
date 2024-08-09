@@ -17,11 +17,11 @@ connectMongoDB("mongodb://127.0.0.1:27017/gulshandb");
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
+app.use(_, res, next) => {
   res.username = "Gulshan kumar";
   res.setHeader("x-your-last-name", "kumar");
 
-  log("i am midlware 1 and  i made the username in request ");
+  log("i  am midlware 1 and  i made the username in request ");
   next();
 });
 
