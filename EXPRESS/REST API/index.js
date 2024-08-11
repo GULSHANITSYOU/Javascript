@@ -16,14 +16,13 @@ connectMongoDB("mongodb://127.0.0.1:27017/gulshandb");
 
 
 app.use(express.urlencoded({ extended: false }));
-
 app.use(_, res, next) => {
   res.username = "Gulshan kumar";
   res.setHeader("x-your-last-name", "kumar");
 
   log("i  am midlware 1 and  i made the username in request ");
   next();
-});
+};
 
 app.use((req, res, next) => {
   log("I am middleware 2");
