@@ -12,5 +12,5 @@ const update = {
 }
 
 const neuser = {...user,...update}; 
-console.log(neuser);
+console.log(neuser); 
 
